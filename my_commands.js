@@ -26,3 +26,15 @@ db.restaurants.updateOne({name:"Rivirea Caterer"}, {$set:{cuisine: "Donuts"}})
 
 // update multiple documents
 db.restaurants.updateMany({city:"Chicago"}, {$set:{cuisine: "Default"}})
+
+
+// delete single document
+db.restaurants.deleteOne({city:"Vancouver"})
+
+// Not equal operator
+db.restaurants.find({cuisine:{$ne:"American"}}, {name:1, _id:0}).count()
+
+db.restaurants.find({address.zipcode: {$lt:11120}})
+
+// greater than operator
+db.restaurants.find({grades:{$elemMatch:{score:{$gt: 70}}}}, {name:1, _id:0}).count()
